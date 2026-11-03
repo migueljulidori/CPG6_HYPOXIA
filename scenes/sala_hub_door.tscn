@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=3 uid="uid://sala_hub_door"]
+
+[ext_resource type="Script" path="res://scripts/sala_hub_door.gd" id="1_door"]
+[ext_resource type="Script" path="res://scripts/scene_transition_interact.gd" id="2_interact"]
+[ext_resource type="Texture2D" path="res://assets/doors/porta.png" id="3_porta"]
+
+[sub_resource type="RectangleShape2D" id="Door_block_shape"]
+size = Vector2(40, 120)
+
+[sub_resource type="RectangleShape2D" id="Door_interact_shape"]
+size = Vector2(200, 170)
+
+[node name="SalaHubDoor" type="Node2D"]
+script = ExtResource("1_door")
+
+[node name="DoorSprite" type="Sprite2D" parent="."]
+texture = ExtResource("3_porta")
+scale = Vector2(2.25, 2.25)
+
+[node name="OpenGlow" type="Sprite2D" parent="."]
+modulate = Color(0.45, 1, 0.6, 0.45)
+texture = ExtResource("3_porta")
+scale = Vector2(2.25, 2.25)
+
+[node name="DoorBlocker" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorBlocker"]
+shape = SubResource("Door_block_shape")
+
+[node name="DoorSign" type="Node2D" parent="."]
+position = Vector2(-78, 0)
+
+[node name="Label" type="Label" parent="DoorSign"]
+offset_left = -96.0
+offset_top = -14.0
+offset_right = 96.0
+offset_bottom = 14.0
+theme_override_colors/font_color = Color(0.95, 0.45, 0.5, 1)
+theme_override_font_sizes/font_size = 15
+text = "SALA"
+horizontal_alignment = 1
+
+[node name="DoorInteract" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_interact")
+hint_ready = "[E] ENTRAR"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DoorInteract"]
+shape = SubResource("Door_interact_shape")
+
+[node name="HintLabel" type="Label" parent="DoorInteract"]
+offset_left = -80.0
+offset_top = -100.0
+offset_right = 80.0
+offset_bottom = -76.0
+theme_override_colors/font_color = Color(0.55, 1, 0.75, 1)
+theme_override_font_sizes/font_size = 14
+text = "[E] ENTRAR"
+horizontal_alignment = 1
+visible = false

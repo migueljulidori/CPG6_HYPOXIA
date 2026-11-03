@@ -1,0 +1,1735 @@
+[gd_scene load_steps=25 format=3 uid="uid://gpx5af8uiuc1"]
+[ext_resource type="Script" path="res://scripts/floor_reveal.gd" id="floor_reveal"]
+[ext_resource type="Texture2D" path="res://assets/floor/pedra_5.png" id="floor_pedra_5"]
+[ext_resource type="Texture2D" path="res://assets/floor/pedra_3.png" id="floor_pedra_3"]
+[ext_resource type="Texture2D" path="res://assets/floor/pedra_1.png" id="floor_pedra_1"]
+[ext_resource type="Texture2D" path="res://assets/floor/pedra_4.png" id="floor_pedra_4"]
+[ext_resource type="Texture2D" path="res://assets/floor/pedra_2.png" id="floor_pedra_2"]
+[ext_resource type="Script" path="res://scripts/room_layout_randomizer.gd" id="16_layout"]
+[ext_resource type="Texture2D" path="res://assets/doors/porta.png" id="17_porta"]
+[ext_resource type="Script" path="res://scripts/hub_gameplay.gd" id="18_hub_gameplay"]
+
+
+[ext_resource type="PackedScene" path="res://scenes/prop_obstacle.tscn" id="15_prop"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="1_player"]
+[ext_resource type="Script" uid="uid://bq5oaagdp4v84" path="res://scripts/vision_overlay.gd" id="2_vision"]
+[ext_resource type="Script" path="res://scripts/hud_stats.gd" id="3_hud"]
+[ext_resource type="PackedScene" path="res://scenes/web_trap.tscn" id="4_web"]
+[ext_resource type="PackedScene" path="res://scenes/spider.tscn" id="5_spider"]
+[ext_resource type="Script" uid="uid://cj7ltij6iofeh" path="res://scripts/exit_door.gd" id="7_exit"]
+[ext_resource type="Script" uid="uid://6pifwra6a8t0" path="res://scripts/scene_spawn.gd" id="10_spawn"]
+[ext_resource type="Script" path="res://scripts/spawn_marker.gd" id="11_marker"]
+
+[sub_resource type="RectangleShape2D" id="Wall_h"]
+size = Vector2(2100, 44)
+
+[sub_resource type="RectangleShape2D" id="Wall_v"]
+size = Vector2(44, 1290)
+
+[sub_resource type="RectangleShape2D" id="Door_shape"]
+size = Vector2(96, 28)
+
+[sub_resource type="RectangleShape2D" id="Exit_zone_shape"]
+size = Vector2(120, 48)
+
+[node name="Main" type="Node2D" unique_id=1335038220]
+
+[node name="FloorLayer" type="CanvasLayer" parent="."]
+layer = -10
+follow_viewport_enabled = true
+
+[node name="World" type="Node2D" parent="." unique_id=946903785]
+script = ExtResource("10_spawn")
+
+[node name="Hub" type="Node2D" parent="World" unique_id=320176499]
+
+[node name="Backdrop" type="Polygon2D" parent="World/Hub" unique_id=1400509137]
+z_index = -100
+visible = false
+polygon = PackedVector2Array(-1170, -690, 1170, -690, 1170, 690, -1170, 690)
+
+[node name="Floor" type="Node2D" parent="FloorLayer"]
+script = ExtResource("floor_reveal")
+z_index = -95
+
+[node name="Stone_0_0" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-1106.0, -626.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_5")
+modulate = Color(1.0514, 1.0514, 1.0724, 1)
+[node name="Stone_1_0" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-978.0, -626.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_3")
+modulate = Color(0.9954, 0.9954, 1.0153, 1)
+[node name="Stone_2_0" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-850.0, -626.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(0.9409, 0.9409, 0.9598, 1)
+[node name="Stone_3_0" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-722.0, -626.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_4")
+modulate = Color(0.9230, 0.9230, 0.9415, 1)
+[node name="Stone_4_0" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-594.0, -626.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(0.9435, 0.9435, 0.9624, 1)
+[node name="Stone_5_0" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-466.0, -626.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_4")
+modulate = Color(1.0082, 1.0082, 1.0284, 1)
+[node name="Stone_6_0" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-338.0, -626.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_2")
+modulate = Color(0.9759, 0.9759, 0.9954, 1)
+[node name="Stone_7_0" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-210.0, -626.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(1.0798, 1.0798, 1.1014, 1)
+[node name="Stone_8_0" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-82.0, -626.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_5")
+modulate = Color(0.9490, 0.9490, 0.9680, 1)
+[node name="Stone_9_0" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(46.0, -626.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_4")
+modulate = Color(1.0755, 1.0755, 1.0970, 1)
+[node name="Stone_10_0" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(174.0, -626.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_3")
+modulate = Color(1.0426, 1.0426, 1.0635, 1)
+[node name="Stone_11_0" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(302.0, -626.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(0.9858, 0.9858, 1.0056, 1)
+[node name="Stone_12_0" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(430.0, -626.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_2")
+modulate = Color(1.0769, 1.0769, 1.0985, 1)
+[node name="Stone_13_0" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(558.0, -626.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_5")
+modulate = Color(0.9557, 0.9557, 0.9748, 1)
+[node name="Stone_14_0" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(686.0, -626.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_3")
+modulate = Color(0.9611, 0.9611, 0.9803, 1)
+[node name="Stone_15_0" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(814.0, -626.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_4")
+modulate = Color(0.9222, 0.9222, 0.9406, 1)
+[node name="Stone_16_0" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(942.0, -626.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_2")
+modulate = Color(0.9818, 0.9818, 1.0014, 1)
+[node name="Stone_17_0" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(1070.0, -626.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_5")
+modulate = Color(0.9202, 0.9202, 0.9386, 1)
+[node name="Stone_18_0" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(1198.0, -626.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_3")
+modulate = Color(0.9726, 0.9726, 0.9921, 1)
+[node name="Stone_0_1" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-1106.0, -498.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_4")
+modulate = Color(1.0781, 1.0781, 1.0997, 1)
+[node name="Stone_1_1" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-978.0, -498.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_2")
+modulate = Color(1.0496, 1.0496, 1.0706, 1)
+[node name="Stone_2_1" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-850.0, -498.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_4")
+modulate = Color(0.9245, 0.9245, 0.9430, 1)
+[node name="Stone_3_1" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-722.0, -498.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(0.9863, 0.9863, 1.0060, 1)
+[node name="Stone_4_1" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-594.0, -498.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_2")
+modulate = Color(0.9807, 0.9807, 1.0003, 1)
+[node name="Stone_5_1" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-466.0, -498.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_3")
+modulate = Color(1.0211, 1.0211, 1.0416, 1)
+[node name="Stone_6_1" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-338.0, -498.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_5")
+modulate = Color(1.0588, 1.0588, 1.0800, 1)
+[node name="Stone_7_1" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-210.0, -498.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_4")
+modulate = Color(1.0510, 1.0510, 1.0720, 1)
+[node name="Stone_8_1" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-82.0, -498.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_2")
+modulate = Color(1.0344, 1.0344, 1.0551, 1)
+[node name="Stone_9_1" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(46.0, -498.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_3")
+modulate = Color(0.9937, 0.9937, 1.0135, 1)
+[node name="Stone_10_1" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(174.0, -498.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_5")
+modulate = Color(1.0088, 1.0088, 1.0290, 1)
+[node name="Stone_11_1" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(302.0, -498.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_4")
+modulate = Color(0.9950, 0.9950, 1.0149, 1)
+[node name="Stone_12_1" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(430.0, -498.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(0.9688, 0.9688, 0.9882, 1)
+[node name="Stone_13_1" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(558.0, -498.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_3")
+modulate = Color(0.9794, 0.9794, 0.9990, 1)
+[node name="Stone_14_1" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(686.0, -498.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_5")
+modulate = Color(0.9773, 0.9773, 0.9969, 1)
+[node name="Stone_15_1" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(814.0, -498.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(0.9812, 0.9812, 1.0008, 1)
+[node name="Stone_16_1" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(942.0, -498.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_4")
+modulate = Color(0.9726, 0.9726, 0.9920, 1)
+[node name="Stone_17_1" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(1070.0, -498.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_2")
+modulate = Color(1.0418, 1.0418, 1.0626, 1)
+[node name="Stone_18_1" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(1198.0, -498.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(0.9279, 0.9279, 0.9465, 1)
+[node name="Stone_0_2" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-1106.0, -370.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_3")
+modulate = Color(0.9962, 0.9962, 1.0161, 1)
+[node name="Stone_1_2" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-978.0, -370.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_4")
+modulate = Color(0.9379, 0.9379, 0.9566, 1)
+[node name="Stone_2_2" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-850.0, -370.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_2")
+modulate = Color(1.0083, 1.0083, 1.0285, 1)
+[node name="Stone_3_2" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-722.0, -370.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_4")
+modulate = Color(0.9269, 0.9269, 0.9454, 1)
+[node name="Stone_4_2" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-594.0, -370.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(0.9506, 0.9506, 0.9697, 1)
+[node name="Stone_5_2" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-466.0, -370.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_5")
+modulate = Color(1.0373, 1.0373, 1.0580, 1)
+[node name="Stone_6_2" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-338.0, -370.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_2")
+modulate = Color(0.9840, 0.9840, 1.0037, 1)
+[node name="Stone_7_2" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-210.0, -370.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_5")
+modulate = Color(1.0382, 1.0382, 1.0589, 1)
+[node name="Stone_8_2" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-82.0, -370.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(0.9737, 0.9737, 0.9931, 1)
+[node name="Stone_9_2" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(46.0, -370.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_2")
+modulate = Color(1.0186, 1.0186, 1.0390, 1)
+[node name="Stone_10_2" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(174.0, -370.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(0.9817, 0.9817, 1.0014, 1)
+[node name="Stone_11_2" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(302.0, -370.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_5")
+modulate = Color(0.9425, 0.9425, 0.9614, 1)
+[node name="Stone_12_2" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(430.0, -370.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_2")
+modulate = Color(0.9750, 0.9750, 0.9945, 1)
+[node name="Stone_13_2" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(558.0, -370.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_5")
+modulate = Color(0.9977, 0.9977, 1.0177, 1)
+[node name="Stone_14_2" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(686.0, -370.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_4")
+modulate = Color(0.9964, 0.9964, 1.0164, 1)
+[node name="Stone_15_2" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(814.0, -370.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_5")
+modulate = Color(0.9993, 0.9993, 1.0193, 1)
+[node name="Stone_16_2" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(942.0, -370.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(0.9414, 0.9414, 0.9602, 1)
+[node name="Stone_17_2" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(1070.0, -370.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_4")
+modulate = Color(1.0664, 1.0664, 1.0877, 1)
+[node name="Stone_18_2" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(1198.0, -370.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_5")
+modulate = Color(1.0608, 1.0608, 1.0820, 1)
+[node name="Stone_0_3" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-1106.0, -242.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_2")
+modulate = Color(0.9624, 0.9624, 0.9816, 1)
+[node name="Stone_1_3" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-978.0, -242.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_5")
+modulate = Color(0.9662, 0.9662, 0.9856, 1)
+[node name="Stone_2_3" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-850.0, -242.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(1.0577, 1.0577, 1.0789, 1)
+[node name="Stone_3_3" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-722.0, -242.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_2")
+modulate = Color(0.9362, 0.9362, 0.9549, 1)
+[node name="Stone_4_3" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-594.0, -242.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_4")
+modulate = Color(0.9509, 0.9509, 0.9700, 1)
+[node name="Stone_5_3" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-466.0, -242.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(1.0394, 1.0394, 1.0602, 1)
+[node name="Stone_6_3" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-338.0, -242.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_5")
+modulate = Color(0.9461, 0.9461, 0.9650, 1)
+[node name="Stone_7_3" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-210.0, -242.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_3")
+modulate = Color(1.0507, 1.0507, 1.0717, 1)
+[node name="Stone_8_3" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-82.0, -242.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_5")
+modulate = Color(1.0073, 1.0073, 1.0275, 1)
+[node name="Stone_9_3" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(46.0, -242.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(1.0046, 1.0046, 1.0247, 1)
+[node name="Stone_10_3" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(174.0, -242.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_4")
+modulate = Color(0.9891, 0.9891, 1.0089, 1)
+[node name="Stone_11_3" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(302.0, -242.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_3")
+modulate = Color(0.9589, 0.9589, 0.9781, 1)
+[node name="Stone_12_3" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(430.0, -242.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(0.9813, 0.9813, 1.0009, 1)
+[node name="Stone_13_3" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(558.0, -242.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_2")
+modulate = Color(0.9816, 0.9816, 1.0012, 1)
+[node name="Stone_14_3" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(686.0, -242.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_5")
+modulate = Color(1.0368, 1.0368, 1.0575, 1)
+[node name="Stone_15_3" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(814.0, -242.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_3")
+modulate = Color(1.0708, 1.0708, 1.0922, 1)
+[node name="Stone_16_3" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(942.0, -242.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_5")
+modulate = Color(1.0610, 1.0610, 1.0823, 1)
+[node name="Stone_17_3" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(1070.0, -242.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(0.9670, 0.9670, 0.9864, 1)
+[node name="Stone_18_3" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(1198.0, -242.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_2")
+modulate = Color(0.9382, 0.9382, 0.9570, 1)
+[node name="Stone_0_4" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-1106.0, -114.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_4")
+modulate = Color(0.9417, 0.9417, 0.9605, 1)
+[node name="Stone_1_4" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-978.0, -114.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_3")
+modulate = Color(1.0759, 1.0759, 1.0975, 1)
+[node name="Stone_2_4" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-850.0, -114.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_2")
+modulate = Color(0.9381, 0.9381, 0.9568, 1)
+[node name="Stone_3_4" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-722.0, -114.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_5")
+modulate = Color(1.0291, 1.0291, 1.0497, 1)
+[node name="Stone_4_4" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-594.0, -114.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_2")
+modulate = Color(0.9396, 0.9396, 0.9584, 1)
+[node name="Stone_5_4" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-466.0, -114.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_4")
+modulate = Color(0.9328, 0.9328, 0.9514, 1)
+[node name="Stone_6_4" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-338.0, -114.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(0.9500, 0.9500, 0.9690, 1)
+[node name="Stone_7_4" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-210.0, -114.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_2")
+modulate = Color(1.0271, 1.0271, 1.0476, 1)
+[node name="Stone_8_4" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-82.0, -114.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_3")
+modulate = Color(0.9928, 0.9928, 1.0127, 1)
+[node name="Stone_9_4" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(46.0, -114.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_2")
+modulate = Color(1.0704, 1.0704, 1.0918, 1)
+[node name="Stone_10_4" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(174.0, -114.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_3")
+modulate = Color(0.9474, 0.9474, 0.9663, 1)
+[node name="Stone_11_4" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(302.0, -114.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(1.0583, 1.0583, 1.0795, 1)
+[node name="Stone_12_4" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(430.0, -114.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_2")
+modulate = Color(1.0018, 1.0018, 1.0218, 1)
+[node name="Stone_13_4" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(558.0, -114.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(0.9578, 0.9578, 0.9770, 1)
+[node name="Stone_14_4" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(686.0, -114.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_3")
+modulate = Color(0.9399, 0.9399, 0.9587, 1)
+[node name="Stone_15_4" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(814.0, -114.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(0.9966, 0.9966, 1.0165, 1)
+[node name="Stone_16_4" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(942.0, -114.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_4")
+modulate = Color(0.9619, 0.9619, 0.9811, 1)
+[node name="Stone_17_4" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(1070.0, -114.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_3")
+modulate = Color(1.0415, 1.0415, 1.0624, 1)
+[node name="Stone_18_4" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(1198.0, -114.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_5")
+modulate = Color(1.0509, 1.0509, 1.0720, 1)
+[node name="Stone_0_5" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-1106.0, 14.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_2")
+modulate = Color(0.9789, 0.9789, 0.9985, 1)
+[node name="Stone_1_5" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-978.0, 14.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(0.9913, 0.9913, 1.0111, 1)
+[node name="Stone_2_5" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-850.0, 14.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_4")
+modulate = Color(1.0502, 1.0502, 1.0712, 1)
+[node name="Stone_3_5" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-722.0, 14.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_2")
+modulate = Color(1.0042, 1.0042, 1.0243, 1)
+[node name="Stone_4_5" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-594.0, 14.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(0.9481, 0.9481, 0.9670, 1)
+[node name="Stone_5_5" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-466.0, 14.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_5")
+modulate = Color(1.0672, 1.0672, 1.0886, 1)
+[node name="Stone_6_5" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-338.0, 14.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_4")
+modulate = Color(0.9724, 0.9724, 0.9918, 1)
+[node name="Stone_7_5" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-210.0, 14.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(0.9808, 0.9808, 1.0004, 1)
+[node name="Stone_8_5" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-82.0, 14.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_5")
+modulate = Color(1.0428, 1.0428, 1.0637, 1)
+[node name="Stone_9_5" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(46.0, 14.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_4")
+modulate = Color(1.0606, 1.0606, 1.0818, 1)
+[node name="Stone_10_5" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(174.0, 14.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(1.0066, 1.0066, 1.0267, 1)
+[node name="Stone_11_5" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(302.0, 14.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_2")
+modulate = Color(1.0238, 1.0238, 1.0443, 1)
+[node name="Stone_12_5" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(430.0, 14.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_5")
+modulate = Color(1.0648, 1.0648, 1.0861, 1)
+[node name="Stone_13_5" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(558.0, 14.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_3")
+modulate = Color(0.9501, 0.9501, 0.9692, 1)
+[node name="Stone_14_5" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(686.0, 14.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_2")
+modulate = Color(1.0396, 1.0396, 1.0604, 1)
+[node name="Stone_15_5" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(814.0, 14.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_5")
+modulate = Color(0.9285, 0.9285, 0.9470, 1)
+[node name="Stone_16_5" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(942.0, 14.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_3")
+modulate = Color(1.0126, 1.0126, 1.0328, 1)
+[node name="Stone_17_5" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(1070.0, 14.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_4")
+modulate = Color(1.0589, 1.0589, 1.0800, 1)
+[node name="Stone_18_5" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(1198.0, 14.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_2")
+modulate = Color(1.0531, 1.0531, 1.0742, 1)
+[node name="Stone_0_6" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-1106.0, 142.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_4")
+modulate = Color(0.9212, 0.9212, 0.9397, 1)
+[node name="Stone_1_6" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-978.0, 142.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_5")
+modulate = Color(0.9811, 0.9811, 1.0008, 1)
+[node name="Stone_2_6" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-850.0, 142.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_2")
+modulate = Color(0.9484, 0.9484, 0.9674, 1)
+[node name="Stone_3_6" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-722.0, 142.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_4")
+modulate = Color(0.9429, 0.9429, 0.9617, 1)
+[node name="Stone_4_6" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-594.0, 142.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_5")
+modulate = Color(0.9339, 0.9339, 0.9526, 1)
+[node name="Stone_5_6" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-466.0, 142.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_3")
+modulate = Color(0.9216, 0.9216, 0.9400, 1)
+[node name="Stone_6_6" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-338.0, 142.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(1.0505, 1.0505, 1.0715, 1)
+[node name="Stone_7_6" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-210.0, 142.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_3")
+modulate = Color(1.0599, 1.0599, 1.0811, 1)
+[node name="Stone_8_6" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-82.0, 142.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(1.0232, 1.0232, 1.0436, 1)
+[node name="Stone_9_6" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(46.0, 142.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_3")
+modulate = Color(1.0170, 1.0170, 1.0373, 1)
+[node name="Stone_10_6" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(174.0, 142.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_5")
+modulate = Color(0.9229, 0.9229, 0.9413, 1)
+[node name="Stone_11_6" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(302.0, 142.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_4")
+modulate = Color(0.9453, 0.9453, 0.9642, 1)
+[node name="Stone_12_6" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(430.0, 142.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_3")
+modulate = Color(1.0446, 1.0446, 1.0655, 1)
+[node name="Stone_13_6" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(558.0, 142.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(0.9803, 0.9803, 0.9999, 1)
+[node name="Stone_14_6" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(686.0, 142.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_5")
+modulate = Color(1.0121, 1.0121, 1.0323, 1)
+[node name="Stone_15_6" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(814.0, 142.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_2")
+modulate = Color(1.0517, 1.0517, 1.0727, 1)
+[node name="Stone_16_6" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(942.0, 142.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_5")
+modulate = Color(1.0057, 1.0057, 1.0258, 1)
+[node name="Stone_17_6" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(1070.0, 142.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_2")
+modulate = Color(1.0572, 1.0572, 1.0784, 1)
+[node name="Stone_18_6" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(1198.0, 142.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(1.0302, 1.0302, 1.0508, 1)
+[node name="Stone_0_7" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-1106.0, 270.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_2")
+modulate = Color(0.9241, 0.9241, 0.9426, 1)
+[node name="Stone_1_7" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-978.0, 270.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(1.0125, 1.0125, 1.0328, 1)
+[node name="Stone_2_7" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-850.0, 270.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_4")
+modulate = Color(1.0298, 1.0298, 1.0504, 1)
+[node name="Stone_3_7" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-722.0, 270.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_3")
+modulate = Color(1.0616, 1.0616, 1.0829, 1)
+[node name="Stone_4_7" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-594.0, 270.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_4")
+modulate = Color(1.0145, 1.0145, 1.0348, 1)
+[node name="Stone_5_7" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-466.0, 270.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(0.9337, 0.9337, 0.9524, 1)
+[node name="Stone_6_7" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-338.0, 270.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_4")
+modulate = Color(0.9840, 0.9840, 1.0037, 1)
+[node name="Stone_7_7" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-210.0, 270.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(1.0193, 1.0193, 1.0397, 1)
+[node name="Stone_8_7" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-82.0, 270.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_4")
+modulate = Color(0.9693, 0.9693, 0.9886, 1)
+[node name="Stone_9_7" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(46.0, 270.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_2")
+modulate = Color(1.0607, 1.0607, 1.0819, 1)
+[node name="Stone_10_7" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(174.0, 270.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_3")
+modulate = Color(0.9535, 0.9535, 0.9726, 1)
+[node name="Stone_11_7" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(302.0, 270.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_5")
+modulate = Color(1.0469, 1.0469, 1.0678, 1)
+[node name="Stone_12_7" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(430.0, 270.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_2")
+modulate = Color(1.0623, 1.0623, 1.0836, 1)
+[node name="Stone_13_7" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(558.0, 270.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_3")
+modulate = Color(1.0763, 1.0763, 1.0978, 1)
+[node name="Stone_14_7" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(686.0, 270.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(1.0071, 1.0071, 1.0273, 1)
+[node name="Stone_15_7" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(814.0, 270.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_3")
+modulate = Color(1.0291, 1.0291, 1.0497, 1)
+[node name="Stone_16_7" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(942.0, 270.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_2")
+modulate = Color(0.9746, 0.9746, 0.9941, 1)
+[node name="Stone_17_7" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(1070.0, 270.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(1.0264, 1.0264, 1.0470, 1)
+[node name="Stone_18_7" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(1198.0, 270.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_2")
+modulate = Color(1.0444, 1.0444, 1.0652, 1)
+[node name="Stone_0_8" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-1106.0, 398.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_5")
+modulate = Color(0.9526, 0.9526, 0.9716, 1)
+[node name="Stone_1_8" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-978.0, 398.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_4")
+modulate = Color(1.0304, 1.0304, 1.0510, 1)
+[node name="Stone_2_8" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-850.0, 398.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(0.9711, 0.9711, 0.9905, 1)
+[node name="Stone_3_8" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-722.0, 398.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_4")
+modulate = Color(0.9572, 0.9572, 0.9763, 1)
+[node name="Stone_4_8" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-594.0, 398.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_3")
+modulate = Color(1.0503, 1.0503, 1.0713, 1)
+[node name="Stone_5_8" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-466.0, 398.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_2")
+modulate = Color(1.0652, 1.0652, 1.0865, 1)
+[node name="Stone_6_8" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-338.0, 398.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(1.0138, 1.0138, 1.0341, 1)
+[node name="Stone_7_8" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-210.0, 398.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_2")
+modulate = Color(1.0573, 1.0573, 1.0784, 1)
+[node name="Stone_8_8" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-82.0, 398.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_5")
+modulate = Color(1.0296, 1.0296, 1.0502, 1)
+[node name="Stone_9_8" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(46.0, 398.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_3")
+modulate = Color(0.9843, 0.9843, 1.0039, 1)
+[node name="Stone_10_8" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(174.0, 398.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(1.0261, 1.0261, 1.0467, 1)
+[node name="Stone_11_8" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(302.0, 398.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_4")
+modulate = Color(0.9702, 0.9702, 0.9896, 1)
+[node name="Stone_12_8" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(430.0, 398.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(0.9373, 0.9373, 0.9561, 1)
+[node name="Stone_13_8" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(558.0, 398.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_2")
+modulate = Color(1.0444, 1.0444, 1.0653, 1)
+[node name="Stone_14_8" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(686.0, 398.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_5")
+modulate = Color(0.9281, 0.9281, 0.9467, 1)
+[node name="Stone_15_8" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(814.0, 398.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_4")
+modulate = Color(0.9214, 0.9214, 0.9398, 1)
+[node name="Stone_16_8" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(942.0, 398.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_5")
+modulate = Color(0.9511, 0.9511, 0.9701, 1)
+[node name="Stone_17_8" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(1070.0, 398.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_2")
+modulate = Color(0.9769, 0.9769, 0.9964, 1)
+[node name="Stone_18_8" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(1198.0, 398.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_3")
+modulate = Color(1.0546, 1.0546, 1.0757, 1)
+[node name="Stone_0_9" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-1106.0, 526.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_4")
+modulate = Color(0.9991, 0.9991, 1.0191, 1)
+[node name="Stone_1_9" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-978.0, 526.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(0.9561, 0.9561, 0.9753, 1)
+[node name="Stone_2_9" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-850.0, 526.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_5")
+modulate = Color(0.9706, 0.9706, 0.9901, 1)
+[node name="Stone_3_9" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-722.0, 526.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_3")
+modulate = Color(0.9426, 0.9426, 0.9615, 1)
+[node name="Stone_4_9" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-594.0, 526.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_5")
+modulate = Color(1.0607, 1.0607, 1.0820, 1)
+[node name="Stone_5_9" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-466.0, 526.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_3")
+modulate = Color(1.0487, 1.0487, 1.0697, 1)
+[node name="Stone_6_9" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-338.0, 526.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_5")
+modulate = Color(0.9693, 0.9693, 0.9886, 1)
+[node name="Stone_7_9" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-210.0, 526.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(0.9295, 0.9295, 0.9481, 1)
+[node name="Stone_8_9" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-82.0, 526.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_2")
+modulate = Color(1.0400, 1.0400, 1.0608, 1)
+[node name="Stone_9_9" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(46.0, 526.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(0.9898, 0.9898, 1.0096, 1)
+[node name="Stone_10_9" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(174.0, 526.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_4")
+modulate = Color(1.0626, 1.0626, 1.0839, 1)
+[node name="Stone_11_9" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(302.0, 526.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(1.0356, 1.0356, 1.0563, 1)
+[node name="Stone_12_9" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(430.0, 526.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_3")
+modulate = Color(0.9965, 0.9965, 1.0164, 1)
+[node name="Stone_13_9" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(558.0, 526.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(0.9300, 0.9300, 0.9486, 1)
+[node name="Stone_14_9" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(686.0, 526.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_3")
+modulate = Color(0.9305, 0.9305, 0.9491, 1)
+[node name="Stone_15_9" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(814.0, 526.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(0.9884, 0.9884, 1.0082, 1)
+[node name="Stone_16_9" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(942.0, 526.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_2")
+modulate = Color(1.0357, 1.0357, 1.0564, 1)
+[node name="Stone_17_9" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(1070.0, 526.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(1.0591, 1.0591, 1.0803, 1)
+[node name="Stone_18_9" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(1198.0, 526.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_4")
+modulate = Color(1.0309, 1.0309, 1.0515, 1)
+[node name="Stone_0_10" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-1106.0, 654.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_5")
+modulate = Color(1.0629, 1.0629, 1.0842, 1)
+[node name="Stone_1_10" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-978.0, 654.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_2")
+modulate = Color(0.9426, 0.9426, 0.9615, 1)
+[node name="Stone_2_10" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-850.0, 654.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(1.0125, 1.0125, 1.0328, 1)
+[node name="Stone_3_10" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-722.0, 654.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_5")
+modulate = Color(1.0099, 1.0099, 1.0301, 1)
+[node name="Stone_4_10" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-594.0, 654.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_3")
+modulate = Color(1.0480, 1.0480, 1.0689, 1)
+[node name="Stone_5_10" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-466.0, 654.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_4")
+modulate = Color(0.9529, 0.9529, 0.9719, 1)
+[node name="Stone_6_10" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-338.0, 654.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_3")
+modulate = Color(1.0262, 1.0262, 1.0467, 1)
+[node name="Stone_7_10" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-210.0, 654.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_5")
+modulate = Color(1.0269, 1.0269, 1.0474, 1)
+[node name="Stone_8_10" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(-82.0, 654.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_3")
+modulate = Color(1.0096, 1.0096, 1.0298, 1)
+[node name="Stone_9_10" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(46.0, 654.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_2")
+modulate = Color(1.0000, 1.0000, 1.0200, 1)
+[node name="Stone_10_10" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(174.0, 654.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(1.0522, 1.0522, 1.0732, 1)
+[node name="Stone_11_10" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(302.0, 654.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_2")
+modulate = Color(0.9885, 0.9885, 1.0083, 1)
+[node name="Stone_12_10" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(430.0, 654.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(1.0558, 1.0558, 1.0769, 1)
+[node name="Stone_13_10" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(558.0, 654.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_3")
+modulate = Color(0.9250, 0.9250, 0.9435, 1)
+[node name="Stone_14_10" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(686.0, 654.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(0.9977, 0.9977, 1.0176, 1)
+[node name="Stone_15_10" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(814.0, 654.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_4")
+modulate = Color(0.9889, 0.9889, 1.0087, 1)
+[node name="Stone_16_10" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(942.0, 654.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_3")
+modulate = Color(0.9576, 0.9576, 0.9767, 1)
+[node name="Stone_17_10" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(1070.0, 654.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_2")
+modulate = Color(1.0796, 1.0796, 1.1012, 1)
+[node name="Stone_18_10" type="Sprite2D" parent="FloorLayer/Floor"]
+z_index = -95
+position = Vector2(1198.0, 654.0)
+scale = Vector2(4.0, 4.0)
+texture = ExtResource("floor_pedra_1")
+modulate = Color(1.0189, 1.0189, 1.0393, 1)[node name="BoundaryGlow" type="Node2D" parent="World/Hub" unique_id=1653638121]
+z_index = -85
+
+[node name="EdgeTop" type="Polygon2D" parent="World/Hub/BoundaryGlow" unique_id=85931980]
+color = Color(0.15, 0.88, 1, 0.92)
+polygon = PackedVector2Array(-1050, -657, 1050, -657, 1050, -627, -1050, -627)
+
+[node name="EdgeBottom" type="Polygon2D" parent="World/Hub/BoundaryGlow" unique_id=1591525226]
+color = Color(0.15, 0.88, 1, 0.92)
+polygon = PackedVector2Array(-1050, 627, 1050, 627, 1050, 657, -1050, 657)
+
+[node name="EdgeLeft" type="Polygon2D" parent="World/Hub/BoundaryGlow" unique_id=67901243]
+color = Color(0.15, 0.88, 1, 0.92)
+polygon = PackedVector2Array(-1077, -645, -1047, -645, -1047, 645, -1077, 645)
+
+[node name="EdgeRight" type="Polygon2D" parent="World/Hub/BoundaryGlow" unique_id=11802587]
+color = Color(0.15, 0.88, 1, 0.92)
+polygon = PackedVector2Array(1047, -645, 1077, -645, 1077, 645, 1047, 645)
+
+[node name="CornerTL" type="Polygon2D" parent="World/Hub/BoundaryGlow" unique_id=1979834197]
+color = Color(0.4, 1, 1, 1)
+polygon = PackedVector2Array(-1077, -657, -1035, -657, -1035, -627, -1077, -627)
+
+[node name="CornerTR" type="Polygon2D" parent="World/Hub/BoundaryGlow" unique_id=1173846917]
+color = Color(0.4, 1, 1, 1)
+polygon = PackedVector2Array(1035, -657, 1077, -657, 1077, -627, 1035, -627)
+
+[node name="CornerBL" type="Polygon2D" parent="World/Hub/BoundaryGlow" unique_id=1664103699]
+color = Color(0.4, 1, 1, 1)
+polygon = PackedVector2Array(-1077, 627, -1035, 627, -1035, 657, -1077, 657)
+
+[node name="CornerBR" type="Polygon2D" parent="World/Hub/BoundaryGlow" unique_id=1454764076]
+color = Color(0.4, 1, 1, 1)
+polygon = PackedVector2Array(1035, 627, 1077, 627, 1077, 657, 1035, 657)
+
+[node name="Obstacles" type="Node2D" parent="World/Hub" unique_id=1463987085]
+
+[node name="Walls" type="Node2D" parent="World/Hub/Obstacles" unique_id=2147002011]
+
+[node name="WallTop" type="StaticBody2D" parent="World/Hub/Obstacles/Walls" unique_id=851025555]
+position = Vector2(0, -678)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Hub/Obstacles/Walls/WallTop" unique_id=1674608784]
+shape = SubResource("Wall_h")
+
+[node name="Vis" type="Polygon2D" parent="World/Hub/Obstacles/Walls/WallTop" unique_id=1682371559]
+color = Color(0.45, 0.4, 0.34, 1)
+polygon = PackedVector2Array(-1050, -22, 1050, -22, 1050, 22, -1050, 22)
+
+[node name="WallBottom" type="StaticBody2D" parent="World/Hub/Obstacles/Walls" unique_id=777352171]
+position = Vector2(0, 678)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Hub/Obstacles/Walls/WallBottom" unique_id=885986210]
+shape = SubResource("Wall_h")
+
+[node name="Vis" type="Polygon2D" parent="World/Hub/Obstacles/Walls/WallBottom" unique_id=2097396325]
+color = Color(0.45, 0.4, 0.34, 1)
+polygon = PackedVector2Array(-1050, -22, 1050, -22, 1050, 22, -1050, 22)
+
+[node name="WallLeft" type="StaticBody2D" parent="World/Hub/Obstacles/Walls" unique_id=2053182319]
+position = Vector2(-1092, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Hub/Obstacles/Walls/WallLeft" unique_id=871276993]
+shape = SubResource("Wall_v")
+
+[node name="Vis" type="Polygon2D" parent="World/Hub/Obstacles/Walls/WallLeft" unique_id=1500924784]
+color = Color(0.45, 0.4, 0.34, 1)
+polygon = PackedVector2Array(-22, -645, 22, -645, 22, 645, -22, 645)
+
+[node name="WallRight" type="StaticBody2D" parent="World/Hub/Obstacles/Walls" unique_id=510472201]
+position = Vector2(1092, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Hub/Obstacles/Walls/WallRight" unique_id=610945277]
+shape = SubResource("Wall_v")
+
+[node name="Vis" type="Polygon2D" parent="World/Hub/Obstacles/Walls/WallRight" unique_id=137812298]
+color = Color(0.45, 0.4, 0.34, 1)
+polygon = PackedVector2Array(-22, -645, 22, -645, 22, 645, -22, 645)
+
+[node name="Props" type="Node2D" parent="World/Hub/Obstacles"]
+[node name="Prop00" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(-500, -200)
+texture_path = "res://assets/props/mesas/azul.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.72, 0.46)
+
+[node name="Prop01" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(-600, -200)
+texture_path = "res://assets/props/cadeiras/Azul.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.56, 0.56)
+
+[node name="Prop02" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(-400, -200)
+texture_path = "res://assets/props/cadeiras/Laranja.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.56, 0.56)
+
+[node name="Prop03" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(-500, -300)
+texture_path = "res://assets/props/cadeiras/Rosa.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.56, 0.56)
+
+[node name="Prop04" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(-500, -100)
+texture_path = "res://assets/props/cadeiras/Azul.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.56, 0.56)
+
+[node name="Prop05" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(580, -280)
+texture_path = "res://assets/props/caixas/azul.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.6, 0.6)
+
+[node name="Prop06" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(700, -280)
+texture_path = "res://assets/props/caixas/laranja.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.6, 0.6)
+
+[node name="Prop07" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(580, -160)
+texture_path = "res://assets/props/caixas/Rosa.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.6, 0.6)
+
+[node name="Prop08" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(700, -160)
+texture_path = "res://assets/props/caixas/laranja.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.6, 0.6)
+
+[node name="Prop09" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(-750, -40)
+texture_path = "res://assets/props/caixas/azul.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.6, 0.6)
+
+[node name="Prop10" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(-750, 100)
+texture_path = "res://assets/props/caixas/Rosa.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.6, 0.6)
+
+[node name="Prop11" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(-750, 240)
+texture_path = "res://assets/props/caixas/laranja.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.6, 0.6)
+
+[node name="Prop12" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(560, 60)
+texture_path = "res://assets/props/caixas/Rosa.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.6, 0.6)
+
+[node name="Prop13" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(560, 200)
+texture_path = "res://assets/props/caixas/azul.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.6, 0.6)
+
+[node name="Prop14" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(560, 340)
+texture_path = "res://assets/props/caixas/laranja.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.6, 0.6)
+
+[node name="Prop15" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(-360, 250)
+texture_path = "res://assets/props/mesas/laranja.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.72, 0.46)
+
+[node name="Prop16" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(0, 250)
+texture_path = "res://assets/props/mesas/rosa.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.72, 0.46)
+
+[node name="Prop17" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(360, 250)
+texture_path = "res://assets/props/mesas/azul.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.72, 0.46)
+
+[node name="Prop18" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(-360, 150)
+texture_path = "res://assets/props/cadeiras/Laranja.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.56, 0.56)
+
+[node name="Prop19" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(0, 150)
+texture_path = "res://assets/props/cadeiras/Rosa.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.56, 0.56)
+
+[node name="Prop20" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(360, 150)
+texture_path = "res://assets/props/cadeiras/Azul.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.56, 0.56)
+
+[node name="Prop21" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(-460, 400)
+texture_path = "res://assets/props/mesas/azul.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.72, 0.46)
+
+[node name="Prop22" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(-560, 400)
+texture_path = "res://assets/props/cadeiras/Azul.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.56, 0.56)
+
+[node name="Prop23" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(-360, 400)
+texture_path = "res://assets/props/cadeiras/Laranja.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.56, 0.56)
+
+[node name="Prop24" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(460, 400)
+texture_path = "res://assets/props/caixas/azul.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.6, 0.6)
+
+[node name="Prop25" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(580, 400)
+texture_path = "res://assets/props/caixas/laranja.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.6, 0.6)
+
+[node name="Prop26" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(520, 500)
+texture_path = "res://assets/props/caixas/Rosa.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.6, 0.6)
+
+[node name="Prop27" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(-380, -470)
+texture_path = "res://assets/props/caixas/azul.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.6, 0.6)
+
+[node name="Prop28" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(380, -470)
+texture_path = "res://assets/props/caixas/laranja.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.6, 0.6)
+
+[node name="Prop29" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(-620, 60)
+texture_path = "res://assets/props/caixas/Rosa.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.6, 0.6)
+
+[node name="Prop30" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(620, -100)
+texture_path = "res://assets/props/mesas/laranja.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.72, 0.46)
+
+[node name="Prop31" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(720, -100)
+texture_path = "res://assets/props/cadeiras/Laranja.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.56, 0.56)
+
+[node name="Prop32" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(520, -100)
+texture_path = "res://assets/props/cadeiras/Rosa.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.56, 0.56)
+
+[node name="Prop33" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(-220, -120)
+texture_path = "res://assets/props/caixas/azul.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.6, 0.6)
+
+[node name="Prop34" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(80, -300)
+texture_path = "res://assets/props/mesas/azul.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.72, 0.46)
+
+[node name="Prop35" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(-20, -300)
+texture_path = "res://assets/props/cadeiras/Azul.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.56, 0.56)
+
+[node name="Prop36" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(180, -300)
+texture_path = "res://assets/props/cadeiras/Laranja.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.56, 0.56)
+
+[node name="Gameplay" type="Node2D" parent="World/Hub" unique_id=326357054]
+[node name="HubGameplay" type="Node2D" parent="World/Hub/Gameplay"]
+script = ExtResource("18_hub_gameplay")
+
+[node name="RoomLayout" type="Node" parent="World/Hub/Gameplay"]
+script = ExtResource("16_layout")
+puzzle_zone = "hub"
+
+[node name="ExitDoor" type="StaticBody2D" parent="World/Hub/Gameplay" unique_id=967285215]
+position = Vector2(0, -600)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Hub/Gameplay/ExitDoor" unique_id=1166369530]
+shape = SubResource("Door_shape")
+
+[node name="DoorSprite" type="Sprite2D" parent="World/Hub/Gameplay/ExitDoor"]
+texture = ExtResource("17_porta")
+scale = Vector2(2.0, 2.0)
+
+[node name="DoorLabel" type="Label" parent="World/Hub/Gameplay/ExitDoor" unique_id=227649593]
+offset_left = -80.0
+offset_top = -36.0
+offset_right = 80.0
+offset_bottom = -12.0
+theme_override_colors/font_color = Color(0.9, 0.35, 0.4, 1)
+text = "SAIDA (0/3 salas)"
+horizontal_alignment = 1
+
+[node name="ExitZone" type="Area2D" parent="World/Hub/Gameplay" unique_id=1589750442]
+position = Vector2(0, -600)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("7_exit")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Hub/Gameplay/ExitZone" unique_id=2057618938]
+shape = SubResource("Exit_zone_shape")
+
+
+
+
+[node name="SpawnFromRoom1" type="Marker2D" parent="World/Hub/Gameplay" unique_id=1924910289]
+position = Vector2(918, -8)
+script = ExtResource("11_marker")
+spawn_id = "sala1_to_hub"
+
+[node name="Webs" type="Node2D" parent="World/Hub/Gameplay"]
+
+[node name="WebCornerTL" parent="World/Hub/Gameplay/Webs" instance=ExtResource("4_web")]
+position = Vector2(-880, -560)
+web_kind = "corner"
+corner = "top_left"
+
+[node name="WebCornerTR" parent="World/Hub/Gameplay/Webs" instance=ExtResource("4_web")]
+position = Vector2(880, -560)
+web_kind = "corner"
+corner = "top_right"
+
+[node name="WebCornerBL" parent="World/Hub/Gameplay/Webs" instance=ExtResource("4_web")]
+position = Vector2(-880, 560)
+web_kind = "corner"
+corner = "bottom_left"
+
+[node name="WebCornerBR" parent="World/Hub/Gameplay/Webs" instance=ExtResource("4_web")]
+position = Vector2(880, 560)
+web_kind = "corner"
+corner = "bottom_right"
+
+[node name="WebCenter" parent="World/Hub/Gameplay/Webs" instance=ExtResource("4_web")]
+position = Vector2(0, 0)
+web_kind = "full"
+
+[node name="WebMidL" parent="World/Hub/Gameplay/Webs" instance=ExtResource("4_web")]
+position = Vector2(-260, 60)
+web_kind = "full"
+
+[node name="WebMidR" parent="World/Hub/Gameplay/Webs" instance=ExtResource("4_web")]
+position = Vector2(260, -60)
+web_kind = "full"
+
+
+[node name="Spiders" type="Node2D" parent="World/Hub/Gameplay" unique_id=1377034233]
+
+[node name="SpiderWest" parent="World/Hub/Gameplay/Spiders" unique_id=1202230009 instance=ExtResource("5_spider")]
+position = Vector2(-520, -320)
+patrol_axis = Vector2(1, 0)
+
+[node name="SpiderEast" parent="World/Hub/Gameplay/Spiders" unique_id=750334514 instance=ExtResource("5_spider")]
+position = Vector2(520, 260)
+patrol_axis = Vector2(-1, 0)
+
+[node name="SpiderMid" parent="World/Hub/Gameplay/Spiders" unique_id=830411073 instance=ExtResource("5_spider")]
+position = Vector2(-180, 120)
+
+[node name="SpiderSouth" parent="World/Hub/Gameplay/Spiders" unique_id=1034454425 instance=ExtResource("5_spider")]
+position = Vector2(220, -320)
+
+[node name="Player" parent="World" unique_id=2136315638 instance=ExtResource("1_player")]
+position = Vector2(0, 420)
+
+[node name="UILayer" type="CanvasLayer" parent="." unique_id=205162757]
+layer = 200
+
+[node name="HUD" type="Control" parent="UILayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_hud")
+
+[node name="VisionLayer" type="CanvasLayer" parent="." unique_id=176987740]
+layer = 120
+
+[node name="VisionDark" type="ColorRect" parent="VisionLayer" unique_id=366869181]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_vision")
+player_path = NodePath("../../World/Player")

@@ -1,0 +1,471 @@
+[gd_scene load_steps=23 format=3 uid="uid://bat_sala2_scene3"]
+[ext_resource type="Script" path="res://scripts/room_layout_randomizer.gd" id="16_layout"]
+[ext_resource type="Script" path="res://scripts/room_function_puzzle.gd" id="17_room_function_puzzle"]
+[ext_resource type="Script" path="res://scripts/floor_layer.gd" id="floor_layer"]
+
+
+
+[ext_resource type="PackedScene" path="res://scenes/prop_obstacle.tscn" id="15_prop"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="1_player"]
+[ext_resource type="Script" uid="uid://bq5oaagdp4v84" path="res://scripts/vision_overlay.gd" id="2_vision"]
+[ext_resource type="Script" path="res://scripts/hud_stats.gd" id="3_hud"]
+[ext_resource type="PackedScene" path="res://scenes/web_trap.tscn" id="4_web"]
+[ext_resource type="PackedScene" path="res://scenes/spider.tscn" id="5_spider"]
+[ext_resource type="PackedScene" path="res://scenes/rat.tscn" id="13_rat"]
+[ext_resource type="PackedScene" path="res://scenes/room_door_open.tscn" id="14_door_open"]
+[ext_resource type="Script" uid="uid://cj7ltij6iofeh" path="res://scripts/exit_door.gd" id="7_exit"]
+[ext_resource type="Script" uid="uid://6pifwra6a8t0" path="res://scripts/scene_spawn.gd" id="10_spawn"]
+[ext_resource type="Script" path="res://scripts/spawn_marker.gd" id="11_marker"]
+[ext_resource type="Script" uid="uid://xr4peqv10tbu" path="res://scripts/scene_transition_interact.gd" id="12_hub_exit"]
+
+[sub_resource type="RectangleShape2D" id="Wall_h"]
+size = Vector2(2100, 44)
+
+[sub_resource type="RectangleShape2D" id="Wall_v"]
+size = Vector2(44, 1290)
+
+[sub_resource type="RectangleShape2D" id="Door_shape"]
+size = Vector2(96, 28)
+
+[sub_resource type="RectangleShape2D" id="Door1_pass_shape"]
+size = Vector2(110, 150)
+
+[sub_resource type="RectangleShape2D" id="Exit_zone_shape"]
+size = Vector2(120, 48)
+
+[node name="Main" type="Node2D" unique_id=1335038220]
+
+[node name="World" type="Node2D" parent="." unique_id=946903785]
+script = ExtResource("10_spawn")
+
+[node name="Hub" type="Node2D" parent="World" unique_id=320176499]
+
+[node name="Backdrop" type="Polygon2D" parent="World/Hub" unique_id=1400509137]
+z_index = -100
+visible = false
+polygon = PackedVector2Array(-1170, -690, 1170, -690, 1170, 690, -1170, 690)
+
+[node name="BoundaryGlow" type="Node2D" parent="World/Hub" unique_id=1653638121]
+z_index = -85
+
+[node name="EdgeTop" type="Polygon2D" parent="World/Hub/BoundaryGlow" unique_id=85931980]
+color = Color(0.15, 0.88, 1, 0.92)
+polygon = PackedVector2Array(-1050, -657, 1050, -657, 1050, -627, -1050, -627)
+
+[node name="EdgeBottom" type="Polygon2D" parent="World/Hub/BoundaryGlow" unique_id=1591525226]
+color = Color(0.15, 0.88, 1, 0.92)
+polygon = PackedVector2Array(-1050, 627, 1050, 627, 1050, 657, -1050, 657)
+
+[node name="EdgeLeft" type="Polygon2D" parent="World/Hub/BoundaryGlow" unique_id=67901243]
+color = Color(0.15, 0.88, 1, 0.92)
+polygon = PackedVector2Array(-1077, -645, -1047, -645, -1047, 645, -1077, 645)
+
+[node name="EdgeRight" type="Polygon2D" parent="World/Hub/BoundaryGlow" unique_id=11802587]
+color = Color(0.15, 0.88, 1, 0.92)
+polygon = PackedVector2Array(1047, -645, 1077, -645, 1077, 645, 1047, 645)
+
+[node name="CornerTL" type="Polygon2D" parent="World/Hub/BoundaryGlow" unique_id=1979834197]
+color = Color(0.4, 1, 1, 1)
+polygon = PackedVector2Array(-1077, -657, -1035, -657, -1035, -627, -1077, -627)
+
+[node name="CornerTR" type="Polygon2D" parent="World/Hub/BoundaryGlow" unique_id=1173846917]
+color = Color(0.4, 1, 1, 1)
+polygon = PackedVector2Array(1035, -657, 1077, -657, 1077, -627, 1035, -627)
+
+[node name="CornerBL" type="Polygon2D" parent="World/Hub/BoundaryGlow" unique_id=1664103699]
+color = Color(0.4, 1, 1, 1)
+polygon = PackedVector2Array(-1077, 627, -1035, 627, -1035, 657, -1077, 657)
+
+[node name="CornerBR" type="Polygon2D" parent="World/Hub/BoundaryGlow" unique_id=1454764076]
+color = Color(0.4, 1, 1, 1)
+polygon = PackedVector2Array(1035, 627, 1077, 627, 1077, 657, 1035, 657)
+
+[node name="Obstacles" type="Node2D" parent="World/Hub" unique_id=1463987085]
+
+[node name="Walls" type="Node2D" parent="World/Hub/Obstacles" unique_id=2147002011]
+
+[node name="WallTop" type="StaticBody2D" parent="World/Hub/Obstacles/Walls" unique_id=851025555]
+position = Vector2(0, -678)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Hub/Obstacles/Walls/WallTop" unique_id=1674608784]
+shape = SubResource("Wall_h")
+
+[node name="Vis" type="Polygon2D" parent="World/Hub/Obstacles/Walls/WallTop" unique_id=1682371559]
+color = Color(0.45, 0.4, 0.34, 1)
+polygon = PackedVector2Array(-1050, -22, 1050, -22, 1050, 22, -1050, 22)
+
+[node name="WallBottom" type="StaticBody2D" parent="World/Hub/Obstacles/Walls" unique_id=777352171]
+position = Vector2(0, 678)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Hub/Obstacles/Walls/WallBottom" unique_id=885986210]
+shape = SubResource("Wall_h")
+
+[node name="Vis" type="Polygon2D" parent="World/Hub/Obstacles/Walls/WallBottom" unique_id=2097396325]
+color = Color(0.45, 0.4, 0.34, 1)
+polygon = PackedVector2Array(-1050, -22, 1050, -22, 1050, 22, -1050, 22)
+
+[node name="WallLeft" type="StaticBody2D" parent="World/Hub/Obstacles/Walls" unique_id=2053182319]
+position = Vector2(-1092, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Hub/Obstacles/Walls/WallLeft" unique_id=871276993]
+shape = SubResource("Wall_v")
+
+[node name="Vis" type="Polygon2D" parent="World/Hub/Obstacles/Walls/WallLeft" unique_id=1500924784]
+color = Color(0.45, 0.4, 0.34, 1)
+polygon = PackedVector2Array(-22, -645, 22, -645, 22, 645, -22, 645)
+
+[node name="WallRight" type="StaticBody2D" parent="World/Hub/Obstacles/Walls" unique_id=510472201]
+position = Vector2(1092, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Hub/Obstacles/Walls/WallRight" unique_id=610945277]
+shape = SubResource("Wall_v")
+
+[node name="Vis" type="Polygon2D" parent="World/Hub/Obstacles/Walls/WallRight" unique_id=137812298]
+color = Color(0.45, 0.4, 0.34, 1)
+polygon = PackedVector2Array(-22, -645, 22, -645, 22, 645, -22, 645)
+
+[node name="Props" type="Node2D" parent="World/Hub/Obstacles"]
+[node name="Prop00" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(480, -200)
+texture_path = "res://assets/props/mesas/laranja.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.72, 0.46)
+
+[node name="Prop01" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(580, -200)
+texture_path = "res://assets/props/cadeiras/Laranja.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.56, 0.56)
+
+[node name="Prop02" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(380, -200)
+texture_path = "res://assets/props/cadeiras/Rosa.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.56, 0.56)
+
+[node name="Prop03" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(480, -300)
+texture_path = "res://assets/props/cadeiras/Azul.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.56, 0.56)
+
+[node name="Prop04" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(-580, -280)
+texture_path = "res://assets/props/caixas/azul.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.6, 0.6)
+
+[node name="Prop05" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(-700, -280)
+texture_path = "res://assets/props/caixas/laranja.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.6, 0.6)
+
+[node name="Prop06" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(-640, -160)
+texture_path = "res://assets/props/caixas/Rosa.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.6, 0.6)
+
+[node name="Prop07" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(-700, -40)
+texture_path = "res://assets/props/caixas/azul.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.6, 0.6)
+
+[node name="Prop08" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(720, -40)
+texture_path = "res://assets/props/caixas/Rosa.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.6, 0.6)
+
+[node name="Prop09" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(720, 100)
+texture_path = "res://assets/props/caixas/laranja.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.6, 0.6)
+
+[node name="Prop10" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(720, 240)
+texture_path = "res://assets/props/caixas/azul.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.6, 0.6)
+
+[node name="Prop11" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(-320, 80)
+texture_path = "res://assets/props/mesas/azul.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.72, 0.46)
+
+[node name="Prop12" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(-220, 80)
+texture_path = "res://assets/props/cadeiras/Azul.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.56, 0.56)
+
+[node name="Prop13" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(-420, 80)
+texture_path = "res://assets/props/cadeiras/Laranja.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.56, 0.56)
+
+[node name="Prop14" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(-360, 250)
+texture_path = "res://assets/props/mesas/rosa.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.72, 0.46)
+
+[node name="Prop15" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(40, 250)
+texture_path = "res://assets/props/mesas/azul.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.72, 0.46)
+
+[node name="Prop16" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(400, 250)
+texture_path = "res://assets/props/mesas/laranja.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.72, 0.46)
+
+[node name="Prop17" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(-360, 150)
+texture_path = "res://assets/props/cadeiras/Rosa.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.56, 0.56)
+
+[node name="Prop18" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(40, 150)
+texture_path = "res://assets/props/cadeiras/Azul.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.56, 0.56)
+
+[node name="Prop19" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(400, 150)
+texture_path = "res://assets/props/cadeiras/Laranja.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.56, 0.56)
+
+[node name="Prop20" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(-460, 400)
+texture_path = "res://assets/props/caixas/azul.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.6, 0.6)
+
+[node name="Prop21" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(-340, 400)
+texture_path = "res://assets/props/caixas/laranja.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.6, 0.6)
+
+[node name="Prop22" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(480, 400)
+texture_path = "res://assets/props/caixas/Rosa.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.6, 0.6)
+
+[node name="Prop23" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(600, 400)
+texture_path = "res://assets/props/caixas/azul.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.6, 0.6)
+
+[node name="Prop24" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(-380, -470)
+texture_path = "res://assets/props/caixas/laranja.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.6, 0.6)
+
+[node name="Prop25" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(380, -470)
+texture_path = "res://assets/props/caixas/Rosa.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.6, 0.6)
+
+[node name="Prop26" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(-500, -120)
+texture_path = "res://assets/props/caixas/laranja.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.6, 0.6)
+
+[node name="Prop27" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(500, 100)
+texture_path = "res://assets/props/mesas/rosa.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.72, 0.46)
+
+[node name="Prop28" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(400, 100)
+texture_path = "res://assets/props/cadeiras/Rosa.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.56, 0.56)
+
+[node name="Prop29" parent="World/Hub/Obstacles/Props" instance=ExtResource("15_prop")]
+position = Vector2(0, 80)
+texture_path = "res://assets/props/caixas/azul.png"
+sprite_scale = Vector2(2.5, 2.5)
+collision_fit = Vector2(0.6, 0.6)
+
+[node name="Gameplay" type="Node2D" parent="World/Hub" unique_id=326357054]
+
+[node name="RoomFunctionPuzzle" type="Node2D" parent="World/Hub/Gameplay"]
+script = ExtResource("17_room_function_puzzle")
+sala_id = "sala2"
+[node name="RoomLayout" type="Node" parent="World/Hub/Gameplay"]
+script = ExtResource("16_layout")
+puzzle_zone = "sala2"
+
+
+
+
+
+
+[node name="DoorSala1" parent="World/Hub/Gameplay" instance=ExtResource("14_door_open")]
+position = Vector2(-1020, -80)
+sign_text = "SALA 1 [OPEN]"
+
+[node name="DoorInteract" parent="World/Hub/Gameplay/DoorSala1" index="4"]
+target_scene = "res://scenes/sala1.tscn"
+enter_spawn_id = "sala2_to_sala1"
+hint_ready = "[E] SALA 1"
+
+[node name="HintLabel" parent="World/Hub/Gameplay/DoorSala1/DoorInteract" index="1"]
+text = "[E] SALA 1"
+
+[node name="Label" parent="World/Hub/Gameplay/DoorSala1/DoorSign" index="0"]
+text = "SALA 1 [OPEN]"
+
+[node name="SpawnSala1Entry" type="Marker2D" parent="World/Hub/Gameplay"]
+position = Vector2(-960, -80)
+script = ExtResource("11_marker")
+spawn_id = "sala2_to_sala1"
+
+[node name="SpawnHubEntry" type="Marker2D" parent="World/Hub/Gameplay"]
+position = Vector2(-1020, 80)
+script = ExtResource("11_marker")
+spawn_id = "hub_to_sala2"
+
+[node name="ExitToHub" type="Area2D" parent="World/Hub/Gameplay"]
+position = Vector2(-1020, 80)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("12_hub_exit")
+target_scene = "res://scenes/main.tscn"
+enter_spawn_id = "sala2_to_hub"
+hint_ready = "[E] HUB"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Hub/Gameplay/ExitToHub"]
+shape = SubResource("Door1_pass_shape")
+
+[node name="HintLabel" type="Label" parent="World/Hub/Gameplay/ExitToHub"]
+offset_left = -80.0
+offset_top = -88.0
+offset_right = 80.0
+offset_bottom = -64.0
+theme_override_colors/font_color = Color(0.55, 1, 0.75, 1)
+theme_override_font_sizes/font_size = 14
+text = "[E] HUB"
+horizontal_alignment = 1
+visible = false
+
+[node name="PuzzleGoal" type="Marker2D" parent="World/Hub/Gameplay"]
+position = Vector2(1020, 80)
+
+[node name="Webs" type="Node2D" parent="World/Hub/Gameplay"]
+
+[node name="WebCornerTL" parent="World/Hub/Gameplay/Webs" instance=ExtResource("4_web")]
+position = Vector2(-880, -560)
+web_kind = "corner"
+corner = "top_left"
+
+[node name="WebCornerTR" parent="World/Hub/Gameplay/Webs" instance=ExtResource("4_web")]
+position = Vector2(880, -560)
+web_kind = "corner"
+corner = "top_right"
+
+[node name="WebCornerBL" parent="World/Hub/Gameplay/Webs" instance=ExtResource("4_web")]
+position = Vector2(-880, 560)
+web_kind = "corner"
+corner = "bottom_left"
+
+[node name="WebCornerBR" parent="World/Hub/Gameplay/Webs" instance=ExtResource("4_web")]
+position = Vector2(880, 560)
+web_kind = "corner"
+corner = "bottom_right"
+
+[node name="WebCenter" parent="World/Hub/Gameplay/Webs" instance=ExtResource("4_web")]
+position = Vector2(0, 0)
+web_kind = "full"
+
+[node name="WebMidL" parent="World/Hub/Gameplay/Webs" instance=ExtResource("4_web")]
+position = Vector2(-260, 60)
+web_kind = "full"
+
+[node name="WebMidR" parent="World/Hub/Gameplay/Webs" instance=ExtResource("4_web")]
+position = Vector2(260, -60)
+web_kind = "full"
+
+[node name="Rats" type="Node2D" parent="World/Hub/Gameplay"]
+
+[node name="RatNorth" parent="World/Hub/Gameplay/Rats" instance=ExtResource("13_rat")]
+position = Vector2(400, -300)
+patrol_axis = Vector2(0, 1)
+
+[node name="RatEast" parent="World/Hub/Gameplay/Rats" instance=ExtResource("13_rat")]
+position = Vector2(850, 200)
+patrol_axis = Vector2(-1, 0)
+
+[node name="RatWest" parent="World/Hub/Gameplay/Rats" instance=ExtResource("13_rat")]
+position = Vector2(-750, -250)
+patrol_axis = Vector2(1, 0)
+
+[node name="RatCenter" parent="World/Hub/Gameplay/Rats" instance=ExtResource("13_rat")]
+position = Vector2(-100, 150)
+patrol_axis = Vector2(1, 1)
+
+[node name="RatSouth" parent="World/Hub/Gameplay/Rats" instance=ExtResource("13_rat")]
+position = Vector2(300, 480)
+patrol_axis = Vector2(-1, 0)
+
+[node name="RatMid" parent="World/Hub/Gameplay/Rats" instance=ExtResource("13_rat")]
+position = Vector2(-500, 80)
+patrol_axis = Vector2(0, -1)
+
+
+[node name="Player" parent="World" unique_id=2136315638 instance=ExtResource("1_player")]
+position = Vector2(-920, -60)
+
+[node name="UILayer" type="CanvasLayer" parent="." unique_id=205162757]
+layer = 200
+
+[node name="HUD" type="Control" parent="UILayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_hud")
+
+[node name="FloorLayer" type="CanvasLayer" parent="."]
+layer = -10
+follow_viewport_enabled = true
+
+[node name="Floor" type="Node2D" parent="FloorLayer"]
+script = ExtResource("floor_layer")
+
+[node name="VisionLayer" type="CanvasLayer" parent="." unique_id=176987740]
+layer = 120
+
+[node name="VisionDark" type="ColorRect" parent="VisionLayer" unique_id=366869181]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_vision")
+player_path = NodePath("../../World/Player")

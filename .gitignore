@@ -1,0 +1,19 @@
+# Godot 4: cache e arquivos gerados pelo editor
+.godot/
+.import/
+
+# Exportações e modelos locais
+build/
+export_templates/
+
+# Configurações pessoais de ferramentas
+.vscode/
+.idea/
+.vs/
+
+# Arquivos temporários do sistema
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.tmp
+*.bak

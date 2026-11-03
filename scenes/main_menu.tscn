@@ -1,0 +1,233 @@
+[gd_scene load_steps=6 format=3 uid="uid://bat_main_menu"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_menu"]
+[ext_resource type="Theme" path="res://themes/menu_theme.tres" id="2_theme"]
+[ext_resource type="Texture2D" path="res://assets/ui/menu/background_menu.png" id="3_bg_menu"]
+[ext_resource type="Texture2D" path="res://assets/ui/menu/background_texto.png" id="4_bg_texto"]
+[ext_resource type="Texture2D" path="res://assets/ui/menu/logo.png" id="5_logo"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_theme")
+script = ExtResource("1_menu")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_bg_menu")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Logo" type="TextureRect" parent="."]
+z_index = 5
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -380.0
+offset_top = 72.0
+offset_right = 380.0
+offset_bottom = 226.0
+grow_horizontal = 2
+mouse_filter = 2
+texture = ExtResource("5_logo")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MenuPanel" type="Control" parent="."]
+z_index = 10
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Center" type="CenterContainer" parent="MenuPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MenuRoot" type="VBoxContainer" parent="MenuPanel/Center"]
+custom_minimum_size = Vector2(520, 0)
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="BtnStart" type="Button" parent="MenuPanel/Center/MenuRoot"]
+custom_minimum_size = Vector2(320, 40)
+flat = true
+focus_mode = 2
+text = "> INICIAR"
+
+[node name="BtnInstructions" type="Button" parent="MenuPanel/Center/MenuRoot"]
+custom_minimum_size = Vector2(320, 40)
+flat = true
+focus_mode = 2
+text = "> INSTRUÇÕES"
+
+[node name="BtnCredits" type="Button" parent="MenuPanel/Center/MenuRoot"]
+custom_minimum_size = Vector2(320, 40)
+flat = true
+focus_mode = 2
+text = "> CRÉDITOS"
+
+[node name="InstructionsPanel" type="Control" parent="."]
+visible = false
+z_index = 20
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -220.0
+offset_right = 360.0
+offset_bottom = 220.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PanelBg" type="TextureRect" parent="InstructionsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_bg_texto")
+expand_mode = 1
+stretch_mode = 0
+
+[node name="Margin" type="MarginContainer" parent="InstructionsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 52
+theme_override_constants/margin_top = 44
+theme_override_constants/margin_right = 52
+theme_override_constants/margin_bottom = 40
+
+[node name="VBox" type="VBoxContainer" parent="InstructionsPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Header" type="Label" parent="InstructionsPanel/Margin/VBox"]
+theme_override_font_sizes/font_size = 20
+theme_override_colors/font_color = Color(0.72, 0.95, 1, 1)
+text = "INSTRUÇÕES"
+horizontal_alignment = 1
+
+[node name="Scroll" type="ScrollContainer" parent="InstructionsPanel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Body" type="Label" parent="InstructionsPanel/Margin/VBox/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.88, 0.92, 0.98, 1)
+autowrap_mode = 3
+text = "..."
+
+[node name="BtnBack" type="Button" parent="InstructionsPanel/Margin/VBox"]
+custom_minimum_size = Vector2(200, 36)
+size_flags_horizontal = 4
+flat = true
+text = "< VOLTAR"
+
+[node name="CreditsPanel" type="Control" parent="."]
+visible = false
+z_index = 20
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -230.0
+offset_right = 360.0
+offset_bottom = 230.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PanelBg" type="TextureRect" parent="CreditsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_bg_texto")
+expand_mode = 1
+stretch_mode = 0
+
+[node name="Margin" type="MarginContainer" parent="CreditsPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 52
+theme_override_constants/margin_top = 48
+theme_override_constants/margin_right = 52
+theme_override_constants/margin_bottom = 44
+
+[node name="VBox" type="VBoxContainer" parent="CreditsPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Header" type="Label" parent="CreditsPanel/Margin/VBox"]
+theme_override_font_sizes/font_size = 20
+theme_override_colors/font_color = Color(0.72, 0.95, 1, 1)
+text = "CRÉDITOS"
+horizontal_alignment = 1
+
+[node name="Scroll" type="ScrollContainer" parent="CreditsPanel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 280)
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Body" type="Label" parent="CreditsPanel/Margin/VBox/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 11
+theme_override_colors/font_color = Color(0.88, 0.92, 0.98, 1)
+autowrap_mode = 3
+text = "..."
+
+[node name="BtnBack" type="Button" parent="CreditsPanel/Margin/VBox"]
+custom_minimum_size = Vector2(200, 36)
+size_flags_horizontal = 4
+flat = true
+text = "< VOLTAR"

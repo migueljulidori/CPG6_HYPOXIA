@@ -1,0 +1,61 @@
+[gd_scene load_steps=2 format=3 uid="uid://math_terminal_panel"]
+
+[ext_resource type="Script" path="res://scripts/math_terminal_ui.gd" id="1_ui"]
+
+[node name="MathTerminalUI" type="CanvasLayer"]
+layer = 300
+process_mode = 3
+script = ExtResource("1_ui")
+
+[node name="Dim" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.55)
+mouse_filter = 2
+
+[node name="Center" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="Center"]
+custom_minimum_size = Vector2(520, 220)
+
+[node name="Margin" type="MarginContainer" parent="Center/Panel"]
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 16
+
+[node name="VBox" type="VBoxContainer" parent="Center/Panel/Margin"]
+theme_override_constants/separation = 12
+
+[node name="TitleLabel" type="Label" parent="Center/Panel/Margin/VBox"]
+theme_override_colors/font_color = Color(0.35, 1, 0.55, 1)
+theme_override_font_sizes/font_size = 22
+text = "TERMINAL // ctrl+alt+math"
+horizontal_alignment = 1
+
+[node name="SequenceLabel" type="Label" parent="Center/Panel/Margin/VBox"]
+theme_override_colors/font_color = Color(0.5, 0.95, 1, 1)
+theme_override_font_sizes/font_size = 28
+text = "SEQ: ?"
+horizontal_alignment = 1
+
+[node name="AnswerEdit" type="LineEdit" parent="Center/Panel/Margin/VBox"]
+theme_override_font_sizes/font_size = 26
+placeholder_text = "answer..."
+alignment = 1
+max_length = 12
+caret_blink = true
+
+[node name="HintLabel" type="Label" parent="Center/Panel/Margin/VBox"]
+theme_override_colors/font_color = Color(0.65, 0.8, 0.7, 1)
+theme_override_font_sizes/font_size = 14
+text = "hint"
+horizontal_alignment = 1

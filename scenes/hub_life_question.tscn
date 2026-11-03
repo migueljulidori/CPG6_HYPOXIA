@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://hub_life_question"]
+
+[ext_resource type="Script" path="res://scripts/hub_life_question.gd" id="1_life"]
+
+[sub_resource type="RectangleShape2D" id="Rect_interact"]
+size = Vector2(88, 72)
+
+[node name="HubLifeQuestion" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+monitoring = true
+script = ExtResource("1_life")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("Rect_interact")
+
+[node name="Base" type="Polygon2D" parent="."]
+color = Color(0.12, 0.14, 0.16, 1)
+polygon = PackedVector2Array(-44, -36, 44, -36, 44, 36, -44, 36)
+
+[node name="Screen" type="Polygon2D" parent="."]
+color = Color(0.05, 0.18, 0.1, 1)
+polygon = PackedVector2Array(-36, -28, 36, -28, 36, 20, -36, 20)
+
+[node name="ScreenSeqLabel" type="Label" parent="."]
+offset_left = -34.0
+offset_top = -22.0
+offset_right = 34.0
+offset_bottom = 14.0
+theme_override_colors/font_color = Color(0.45, 1, 0.65, 1)
+theme_override_font_sizes/font_size = 11
+text = ""
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+visible = false
+
+[node name="SolvedMark" type="Label" parent="."]
+offset_left = -34.0
+offset_top = -20.0
+offset_right = 34.0
+offset_bottom = 12.0
+theme_override_colors/font_color = Color(0.35, 1, 0.5, 1)
+theme_override_font_sizes/font_size = 16
+text = "OK"
+horizontal_alignment = 1
+vertical_alignment = 1
+visible = false
+
+[node name="PromptLabel" type="Label" parent="."]
+offset_left = -70.0
+offset_top = -58.0
+offset_right = 70.0
+offset_bottom = -38.0
+theme_override_colors/font_color = Color(0.4, 1, 0.65, 1)
+theme_override_font_sizes/font_size = 13
+text = "[E] ?"
+horizontal_alignment = 1
