@@ -5,14 +5,17 @@
 <h1 align="center">HYPOXIA — Ctrl+Alt+Math</h1>
 
 <p align="center">
-  Um jogo de puzzle e exploração criado em 36 horas para o Coding, Pizza & Glory (CDG) 2026.
+  Um jogo de puzzle e exploração criado em 36 horas para o Coding, Pizza & Glory (CPG) 2026.
 </p>
 
 <p align="center">
-  <img alt="Godot 4.6" src="https://img.shields.io/badge/Godot-4.6-478CBF?logo=godotengine&amp;logoColor=white">
-  <img alt="GDScript" src="https://img.shields.io/badge/GDScript-Game-604A91">
-  <img alt="Plataforma Windows" src="https://img.shields.io/badge/Build-Windows-1266B0?logo=windows&amp;logoColor=white">
-  <img alt="Game Jam 2026" src="https://img.shields.io/badge/CDG-2026-41B9BC">
+  <img alt="Godot 4.6" src="https://img.shields.io/badge/Godot-4.6-007ACC?style=flat-square&amp;logo=godotengine&amp;logoColor=white">
+  <img alt="GDScript" src="https://img.shields.io/badge/GDScript-478CBF?style=flat-square">
+  <img alt="Windows" src="https://img.shields.io/badge/Windows-512BD4?style=flat-square&amp;logo=windows&amp;logoColor=white">
+  <img alt="Game Jam: CPG" src="https://img.shields.io/badge/Game%20Jam-CPG-FFC400?style=flat-square&amp;labelColor=3D444D">
+  <img alt="Salas: 3" src="https://img.shields.io/badge/Salas-3-1BC900?style=flat-square&amp;labelColor=3D444D">
+  <img alt="Duração: 36 horas" src="https://img.shields.io/badge/Dura%C3%A7%C3%A3o-36h-007ACC?style=flat-square&amp;labelColor=3D444D">
+  <img alt="Ano: 2026" src="https://img.shields.io/badge/Ano-2026-AD00C5?style=flat-square&amp;labelColor=3D444D">
 </p>
 
 Um erro de cálculo mudou a rota do voo. Agora um morcego está preso em um porão tóxico, com pouca luz e oxigênio limitado. Para escapar, ele precisa atravessar um hub abandonado e resolver três salas de funções matemáticas.
@@ -26,7 +29,7 @@ Um erro de cálculo mudou a rota do voo. Agora um morcego está preso em um por�
 
 ## Jogar
 
-Para jogar sem instalar o Godot, baixe a versão de Windows na seção **Releases** deste repositório quando ela estiver disponível. Extraia o ZIP inteiro e execute `HYPOXIA.exe`, mantendo o arquivo `.pck` na mesma pasta.
+Para jogar sem instalar o Godot, baixe a versão de Windows na seção **Releases** deste repositório. Extraia o ZIP inteiro e execute `HYPOXIA.exe`, mantendo o arquivo `.pck` na mesma pasta.
 
 O botão **Code → Download ZIP** baixa o **projeto-fonte**. Para jogar a partir dele, siga as instruções em [Abrir o projeto](#abrir-o-projeto).
 
@@ -80,7 +83,7 @@ Inclua também `assets/fonts/OFL.txt` no ZIP da build como `OFL-PressStart2P.txt
 | **Yan Gabardo** | Pixel art, interface e animações |
 | **Iury Gonçalves** | Áudio (SFX/BGM) e game design |
 
-Desenvolvido em **36 horas** para o **Coding, Pizza & Glory (CDG) 2026**.
+Desenvolvido em **36 horas** para o **Coding, Pizza & Glory (CPG) 2026**.
 
 ## Direitos de uso
 
