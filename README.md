@@ -11,9 +11,7 @@
 <p align="center">
   <img alt="Godot 4.6" src="https://img.shields.io/badge/Godot-4.6-007ACC?style=flat-square&amp;logo=godotengine&amp;logoColor=white">
   <img alt="GDScript" src="https://img.shields.io/badge/GDScript-478CBF?style=flat-square">
-  <img alt="Windows" src="https://img.shields.io/badge/Windows-512BD4?style=flat-square&amp;logo=windows&amp;logoColor=white">
   <img alt="Game Jam: CPG" src="https://img.shields.io/badge/Game%20Jam-CPG-FFC400?style=flat-square&amp;labelColor=3D444D">
-  <img alt="Salas: 3" src="https://img.shields.io/badge/Salas-3-1BC900?style=flat-square&amp;labelColor=3D444D">
   <img alt="Duração: 36 horas" src="https://img.shields.io/badge/Dura%C3%A7%C3%A3o-36h-007ACC?style=flat-square&amp;labelColor=3D444D">
   <img alt="Ano: 2026" src="https://img.shields.io/badge/Ano-2026-AD00C5?style=flat-square&amp;labelColor=3D444D">
 </p>
@@ -29,7 +27,9 @@ Um erro de cálculo mudou a rota do voo. Agora um morcego está preso em um por�
 
 ## Jogar
 
-Para jogar sem instalar o Godot, baixe a versão de Windows na seção **Releases** deste repositório. Extraia o ZIP inteiro e execute `HYPOXIA.exe`, mantendo o arquivo `.pck` na mesma pasta.
+Para jogar sem instalar o Godot, baixe o ZIP de **Windows** ou **Linux** na seção **Releases** deste repositório e extraia o conteúdo. No Windows, execute `windows/HYPOXIA.exe`. No Linux, abra a pasta `linux`, execute `chmod +x HYPOXIA.x86_64` uma vez e depois `./HYPOXIA.x86_64`. Mantenha o executável e o `.pck` na mesma pasta.
+
+Cada ZIP inclui o executável, o arquivo `.pck` e a licença da fonte.
 
 O botão **Code → Download ZIP** baixa o **projeto-fonte**. Para jogar a partir dele, siga as instruções em [Abrir o projeto](#abrir-o-projeto).
 
@@ -54,14 +54,6 @@ Em cada etapa das salas, o objetivo e o alvo aparecem na tela. Uma escolha incor
 3. Abra o projeto e pressione **F5** para jogar desde a abertura.
 
 O projeto usa **GDScript**, tem resolução base de **1280 × 720** e não exige plugins externos.
-
-### Gerar uma build
-
-O arquivo `export_presets.cfg` já contém os presets **Windows Desktop** e **Linux**. Instale os modelos de exportação correspondentes à sua versão do Godot em **Editor → Gerenciar Modelos de Exportação**. Depois, abra **Projeto → Exportar**, selecione a plataforma e clique em **Exportar Projeto**. Os caminhos configurados são `build/windows/HYPOXIA.exe` e `build/linux/HYPOXIA.x86_64`.
-
-Para distribuir a versão Windows, compacte todo o conteúdo de `build/windows`; o executável e o `.pck` precisam ficar juntos. A pasta `build/` é ignorada pelo controle de versão para que as builds sejam publicadas separadamente do projeto-fonte.
-
-Inclua também `assets/fonts/OFL.txt` no ZIP da build como `OFL-PressStart2P.txt`. O script `scripts/build_release.sh` já copia essa licença para as builds Windows e Linux.
 
 ## Organização
 
